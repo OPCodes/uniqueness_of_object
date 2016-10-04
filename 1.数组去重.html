@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	</style>
+	<script>
+		window.onload = function (){
+
+		 	var arr = [1,3,2,5,2,6,7,2,4,5,2,2,3,2,"1","4","1",true,false,true];
+		 	// 方法一:
+		 	function fn1(arr){
+		 		for( var i = 0; i < arr.length; i++ ){
+		 			for( var j = i+1; j < arr.length; j++ ){
+		 				if( arr[i] === arr[j] ){
+		 					arr.splice(j,1);
+		 					j--;
+		 				}
+		 			}
+		 		}
+
+		 		return arr;
+		 	}
+
+		 	// 方法二:
+		 	function fn2(arr){
+		 		var onOff = true;
+		 		var newArr = [];
+		 		for( var i = 0; i < arr.length; i++ ){
+		 			for( var j = 0; j < arr.length; j++ ){
+		 				if( arr[i] === arr[j] ){
+		 					onOff = false;
+		 					break;
+		 				}
+		 				newArr.push(arr[i]);
+		 			}
+		 		}
+		 		return arr;
+		 	}
+
+		 	// 方法三:
+		 	function fn3(arr){
+		 		var obj = {};
+		 		for( var i = 0; i < arr.length; i++ ){
+		 			if( !obj[typeof(arr[i]) + arr[i]] ){
+		 				obj[typeof(arr[i]) + arr[i]] = 1;
+		 			} else {
+		 				arr.splice(i,1);
+		 				i--;
+		 			}
+		 		}
+		 		return arr;
+		 	}
+
+		 	console.log(fn1(arr));
+		 	console.log(fn2(arr));
+		 	console.log(fn3(arr));
+		 	
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
+    
